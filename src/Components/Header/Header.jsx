@@ -33,6 +33,7 @@ function CustomNavbar() {
               <img src={Logo} alt="" srcSet="" className="mr-3 h-12" />
             </Offcanvas.Title>
           </Offcanvas.Header>
+         
           <Offcanvas.Body>
             <Nav className="justify-content-center flex-grow-1 pe-3 font-bold">
               <NavLink

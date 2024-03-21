@@ -49,7 +49,7 @@ function Footer() {
       </div>
       <div className="container-fluid bg-[#172b41]">
         <div className="row justify-center items-center pt-15 pb-15 pr-10 pl-10">
-          <div className="col-md-3 col-sm-6 text-white text-medium">
+          <div className="col-md-4 col-sm-6 text-white text-medium">
             <img src={Logo} alt="" srcSet="" class="mr-3 h-12 mt-3" />
             <p className="mt-5 mb-5">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae
@@ -58,7 +58,7 @@ function Footer() {
               quod nam autem! Ducimus, sequi!
             </p>
           </div>
-          <div className="col-md-3 col-sm-6 text-white text-medium">
+          <div className="col-md-2 col-sm-6 text-white text-medium">
             <h1 className="text-2xl font-bold mb-3 mt-2">Services</h1>
             <ul className="mt-2">
               <li className="mt-1">

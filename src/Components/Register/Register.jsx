@@ -33,11 +33,7 @@ function Register() {
               <Row className="mb-3">
                 <Form.Group as={Col} md="10" controlId="validationCustom01">
                   <Form.Label>First name</Form.Label>
-                  <Form.Control
-                    required
-                    type="text"
-                    placeholder="First name"
-                  />
+                  <Form.Control required type="text" placeholder="First name" />
                 </Form.Group>
                 <Form.Group as={Col} md="10" controlId="validationCustom02">
                   <Form.Label>Last name</Form.Label>
@@ -97,6 +93,14 @@ function Register() {
                   <Form.Control.Feedback type="invalid">
                     Please provide a valid zip.
                   </Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group className="mt-3" as={Col} md="10" controlId="validationCustom06">
+                  <Form.Select required>
+                    <option value="">Open this select menu</option>
+                    <option value="1">User</option>
+                    <option value="2">Worker</option>
+                    <option value="3">Admin</option>
+                  </Form.Select>
                 </Form.Group>
               </Row>
               <Form.Group className="mb-3">

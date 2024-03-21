@@ -31,7 +31,6 @@ function Login() {
                     placeholder="Username or email address"
                   />
                 </Form.Group>
-
                 <Form.Group className="mb-3" controlId="validationCustom02">
                   <Form.Label>Password</Form.Label>
                   <Form.Control
@@ -40,7 +39,14 @@ function Login() {
                     required
                   />
                 </Form.Group>
-
+                <Form.Group  className="mb-3">
+                  <Form.Select aria-label="Default" required>
+                    <option value="">Open this select menu</option>
+                    <option value="1">User</option>
+                    <option value="2">Worker</option>
+                    <option value="3">Admin</option>
+                  </Form.Select>
+                </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Check
                     required
@@ -49,7 +55,6 @@ function Login() {
                     feedbackType="invalid"
                   />
                 </Form.Group>
-
                 <div>
                   <Button
                     type="submit"
