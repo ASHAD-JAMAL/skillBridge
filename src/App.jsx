@@ -12,6 +12,7 @@ import Faq from "./Components/Faq/Faq";
 import Blog from "./Components/Blog/Blog";
 import Login from "./Components/Login/Login";
 import Register from "./Components/Register/Register";
+import LoginNext from "./Components/Login/LoginNext";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="contact" element={<Contact />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
+          <Route path="login-next" element={<LoginNext/>}/>
         </Route>
       </Routes>
     </>

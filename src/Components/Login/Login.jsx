@@ -44,7 +44,6 @@ function Login() {
                     <option value="">Open this select menu</option>
                     <option value="1">User</option>
                     <option value="2">Worker</option>
-                    <option value="3">Admin</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3">
@@ -55,14 +54,14 @@ function Login() {
                     feedbackType="invalid"
                   />
                 </Form.Group>
-                <div>
+                <Link to="/login-next">
                   <Button
                     type="submit"
                     className="bg-[#09f4bf] font-bold text-white text-sm border-0 my-3"
                   >
                     Submit form
                   </Button>
-                </div>
+                </Link>
               </Form>
 
               <Link to="/register" className="underline hover:text-[#09f4bf]">
