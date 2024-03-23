@@ -13,7 +13,9 @@ import Blog from "./Components/Blog/Blog";
 import Login from "./Components/Login/Login";
 import Register from "./Components/Register/Register";
 import LoginNext from "./Components/Login/LoginNext";
-
+import WorkerDetails from "./Components/Login/WorkerDetails";
+import UserDetails from "./Components/Login/UserDetails"
+import Feedback from "./Components/Login/FeedBack";
 function App() {
   return (
     <>
@@ -28,6 +30,9 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="login-next" element={<LoginNext/>}/>
+          <Route path="worker-details" element={<WorkerDetails/>}/>
+          <Route path="user-details" element={<UserDetails/>} />
+          <Route path="feedback" element={<Feedback/>}/>
         </Route>
       </Routes>
     </>

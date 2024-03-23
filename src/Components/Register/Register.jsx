@@ -99,7 +99,6 @@ function Register() {
                     <option value="">Open this select menu</option>
                     <option value="1">User</option>
                     <option value="2">Worker</option>
-                    <option value="3">Admin</option>
                   </Form.Select>
                 </Form.Group>
               </Row>

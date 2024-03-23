@@ -39,7 +39,7 @@ function Login() {
                     required
                   />
                 </Form.Group>
-                <Form.Group  className="mb-3">
+                <Form.Group className="mb-3">
                   <Form.Select aria-label="Default" required>
                     <option value="">Open this select menu</option>
                     <option value="1">User</option>
@@ -54,16 +54,13 @@ function Login() {
                     feedbackType="invalid"
                   />
                 </Form.Group>
-                <Link to="/login-next">
-                  <Button
-                    type="submit"
-                    className="bg-[#09f4bf] font-bold text-white text-sm border-0 my-3"
-                  >
-                    Submit form
-                  </Button>
-                </Link>
+                <Button
+                  type="submit"
+                  className="bg-[#09f4bf] font-bold text-white text-sm border-0 my-3"
+                >
+                  <Link to="/login-next">Submit form</Link>
+                </Button>
               </Form>
-
               <Link to="/register" className="underline hover:text-[#09f4bf]">
                 Register
               </Link>
