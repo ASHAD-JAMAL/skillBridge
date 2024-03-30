@@ -1,11 +1,11 @@
-import React from "react";
+// import React from "react";
 import { InputGroup, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 function UserCard() {
   return (
     <>
-      <div className="card border-0 shadow-lg p-10 gap-y-3">
+      <div className="card border-0 shadow-lg p-10 gap-y-3 rounded">
         <p>
           <span className="font-bold">Worker Id:</span>30
         </p>
@@ -22,10 +22,14 @@ function UserCard() {
         <p>
           <span className="font-bold">Mobile-No:</span>123456789
         </p>
-        <div>
+        <div className="space-x-5">
           <Button className="bg-[#09f4bf] hover:bg-[#09725a] font-bold border-0">
-            <Link to="#">View Feedback</Link>
+            <Link to="/feedback">View Feedback</Link>
           </Button>
+          <Button className="bg-[#09f4bf] hover:bg-[#09725a] font-bold border-0">
+            <Link to="/workerprofile">See Profile</Link>
+          </Button>
+          
         </div>
       </div>
     </>
