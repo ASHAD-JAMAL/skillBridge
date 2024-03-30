@@ -16,6 +16,8 @@ import LoginNext from "./Components/Login/LoginNext";
 import WorkerDetails from "./Components/Login/WorkerDetails";
 import UserDetails from "./Components/Login/UserDetails"
 import Feedback from "./Components/Login/FeedBack";
+import UserProfile from "./Components/Profile/UserProfile"
+import WorkerProfile from "./Components/Profile/WorkerProfile"
 function App() {
   return (
     <>
@@ -33,6 +35,8 @@ function App() {
           <Route path="worker-details" element={<WorkerDetails/>}/>
           <Route path="user-details" element={<UserDetails/>} />
           <Route path="feedback" element={<Feedback/>}/>
+          <Route path="userprofile" element={<UserProfile/>}/>
+          <Route path="workerprofile" element={<WorkerProfile/>}/>
         </Route>
       </Routes>
     </>
