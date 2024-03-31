@@ -33,7 +33,8 @@ function Login() {
         setTimeout(()=>{
           if (userData.role === 'worker') {
             window.location.href = '#/workerprofile';
-          } else {
+          }
+          if(userData.role==='user'){
             window.location.href = '#/user-details';
           }
         },2000)
