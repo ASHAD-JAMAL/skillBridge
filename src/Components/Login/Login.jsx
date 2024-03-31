@@ -13,7 +13,7 @@ function Login() {
   const [userData ,setUserData]=useState({
     email:'',
     password:'',
-    role:''
+    role:'',
   })
   const handleSubmit = async (event) => {
     const form = event.currentTarget;
@@ -31,7 +31,11 @@ function Login() {
       if(response.status===200){
         toast.success('login successfully!!');
         setTimeout(()=>{
-          window.location.href='#/user-details'
+          if (userData.role === 'worker') {
+            window.location.href = '#/workerprofile';
+          } else {
+            window.location.href = '#/user-details';
+          }
         },2000)
       }
     }catch(error){
@@ -77,7 +81,7 @@ function Login() {
                   />
                 </Form.Group>
                 <Form.Group className="mb-3">
-                  <Form.Select aria-label="Default" required name='user' onChange={handleInputChange}>
+                  <Form.Select aria-label="Default" required name='role' onChange={handleInputChange}>
                     <option value="">Open this select menu</option>
                     <option value="user">User</option>
                     <option value="worker">Worker</option>

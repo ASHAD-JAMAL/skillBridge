@@ -14,8 +14,8 @@ import Login from "./Components/Login/Login";
 import Register from "./Components/Register/Register";
 import UserDetails from "./Components/Login/UserDetails"
 import Feedback from "./Components/Login/FeedBack";
-import WorkerProfile from "./Components/Profile/WorkerProfile"
 import UserProfile from "./Components/Profile/UserProfile"
+import WorkerProfile from "./Components/Profile/WorkerProfile"
 
 //this will be used for integration
 import { ToastContainer} from 'react-toastify';
