@@ -18,6 +18,11 @@ import UserDetails from "./Components/Login/UserDetails"
 import Feedback from "./Components/Login/FeedBack";
 import UserProfile from "./Components/Profile/UserProfile"
 import WorkerProfile from "./Components/Profile/WorkerProfile"
+
+
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
   return (
     <>
@@ -39,6 +44,8 @@ function App() {
           <Route path="workerprofile" element={<WorkerProfile/>}/>
         </Route>
       </Routes>
+
+      <ToastContainer />
     </>
   );
 }
