@@ -30,6 +30,9 @@ function Login() {
       console.log(response);
       if(response.status===200){
         toast.success('login successfully!!');
+        setTimeout(()=>{
+          window.location.href='#/user-details'
+        },2000)
       }
     }catch(error){
         toast.error("login failed");
@@ -93,7 +96,7 @@ function Login() {
                   className="bg-[#09f4bf] font-bold text-white text-sm border-0 my-3"
                   onClick={handleSubmit}
                 >
-                  <Link to="/login-next">Submit form</Link>
+                  Submit form
                 </Button>
               </Form>
               <Link to="/register" className="underline hover:text-[#09f4bf]">
