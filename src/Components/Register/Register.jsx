@@ -41,9 +41,9 @@ function Register() {
       console.log(response);
       if (response.status === 201) {
         toast.success("register successfully");
-        setTimeout(()=>{
-          window.location.href='#/login'
-        },2000)
+        setTimeout(() => {
+          window.location.href = "#/login";
+        }, 2000);
       }
     } catch (error) {
       toast.error("register failed!!");
@@ -63,7 +63,7 @@ function Register() {
             <h4 className="font-bold mb-4 text-xl">Register</h4>
             <Form
               method="post"
-              action='/register'
+              action="/register"
               noValidate
               validated={validated}
               onSubmit={handleSubmit}
@@ -96,8 +96,8 @@ function Register() {
                 <Form.Group as={Col} md="10" controlId="validationCustom02">
                   <Form.Label>Email</Form.Label>
                   <Form.Control
-                    required
                     type="email"
+                    required
                     placeholder="Email"
                     defaultValue={""}
                     name="email"
