@@ -7,6 +7,8 @@ import { Link, NavLink } from "react-router-dom";
 import Logo from "../../assets/Images/logo1.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import '../../App.css'
+
 function CustomNavbar() {
   const [isOpen, setIsOpen] = useState(false);
 

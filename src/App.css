@@ -25,6 +25,10 @@
     width: 110%; 
     height: 100%;
 }
+.btn-close {
+    background-image: url('../src/assets/Images/close.png');
+    cursor: pointer;
+  }
 .custom-accordion-header {
     background-color: #09f4bf;
     color: white !important;
