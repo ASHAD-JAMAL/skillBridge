@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import loginImg from "../../assets/Images/login1img.svg"
 
 import axios from "axios";
 import {toast} from 'react-toastify';
@@ -54,8 +55,11 @@ function Login() {
   return (
     <>
       <div className="container">
-        <div className="row justify-content-center">
-          <div className="py-4 col-md-4 col-11">
+        <div className="row justify-content-center align-items-center">
+          <div className="col-md-5 col-11">
+              <img src={loginImg} alt="" />
+          </div>
+          <div className="col-md-5 col-11">
             <div className="card p-10 m-auto">
               <h4 className="font-bold mb-4 text-xl">Login</h4>
               <Form noValidate validated={validated} onSubmit={handleSubmit} method="post" action='/login'>
