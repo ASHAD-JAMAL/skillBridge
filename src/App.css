@@ -1,6 +1,19 @@
 /* about section  */
 
 
+<<<<<<< HEAD
+=======
+#aboutImg1 img {
+    border-radius: 50%; 
+    object-fit: cover; 
+    width: 110%; 
+    height: 100%;
+}
+.btn-close {
+    background-image: url('../src/assets/Images/close.png');
+    cursor: pointer;
+  }
+>>>>>>> 9c0b98a9785b9cd09ab18bb12cc7a3f61d191b74
 .custom-accordion-header {
     background-color: #09f4bf;
     color: white !important;

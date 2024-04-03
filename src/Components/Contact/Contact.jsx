@@ -1,6 +1,53 @@
-import React from "react";
+import React, { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 import { Row, Col, Form, Button } from "react-bootstrap";
+import { toast } from "react-toastify";
+
 function Contact() {
+  const [formData, setFormData] = useState({
+    user_name: "",
+    user_email: "",
+    subject: "",
+    message: "",
+  });
+
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    emailjs
+      .sendForm(
+        "service_l8j8hi8",
+        "template_rl0wt4s",
+        form.current,
+        "ZOFR6eHBrD6AlkEem"
+      )
+      .then(
+        (result) => {
+          console.log("SUCCESS!", result.text);
+          toast.success("Email sent successfully!");
+          // Clear the form fields by resetting formData state
+          setFormData({
+            user_name: "",
+            user_email: "",
+            subject: "",
+            message: "",
+          });
+          // You can also clear the form directly if using useRef
+          if (form.current) {
+            form.current.reset();
+          }
+        },
+        (error) => {
+          console.log("FAILED...", error.text);
+          toast.error("Failed to send email.");
+        }
+      );
+  };
+
+  const handleInputChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
   return (
     <div className="container-fluid bg-[#f4fafe]">
       <div className="row justify-content-evenly text-center pt-12 pb-12 mx-2">
@@ -62,7 +109,11 @@ function Contact() {
           ></iframe>
         </div>
         <div className="col-12 col-md-5 md:mt-28">
-          <Form className="bg-[#04ffa3] pt-10 pb-10 pr-10 pl-10 rounded">
+          <Form
+            ref={form}
+            onSubmit={sendEmail}
+            className="bg-[#04ffa3] pt-10 pb-10 pr-10 pl-10 rounded"
+          >
             <Row className="mb-3">
               <Form.Group
                 controlId="exampleForm.ControlInput1"
@@ -70,7 +121,13 @@ function Contact() {
                 data-aos="zoom-out-up"
               >
                 <Form.Label>Full Name</Form.Label>
-                <Form.Control type="text" placeholder="Name" />
+                <Form.Control
+                  type="text"
+                  placeholder="Name"
+                  name="user_name"
+                  onChange={handleInputChange}
+                  required
+                />
               </Form.Group>
               <Form.Group
                 controlId="exampleForm.ControlInput2"
@@ -78,7 +135,13 @@ function Contact() {
                 data-aos="zoom-out-up"
               >
                 <Form.Label>Email Address</Form.Label>
-                <Form.Control type="email" placeholder="Email" />
+                <Form.Control
+                  type="email"
+                  placeholder="Email"
+                  name="user_email"
+                  onChange={handleInputChange}
+                  required
+                />
               </Form.Group>
             </Row>
             <Form.Group
@@ -87,7 +150,13 @@ function Contact() {
               data-aos="zoom-out-up"
             >
               <Form.Label>Subject</Form.Label>
-              <Form.Control type="text" placeholder="Subject" />
+              <Form.Control
+                type="text"
+                placeholder="Subject"
+                name="subject"
+                onChange={handleInputChange}
+                required
+              />
             </Form.Group>
             <Form.Group
               controlId="exampleForm.ControlTextarea4"
@@ -95,7 +164,14 @@ function Contact() {
               data-aos="zoom-out-up"
             >
               <Form.Label>Message</Form.Label>
-              <Form.Control as="textarea" placeholder="Message" rows={3} />
+              <Form.Control
+                as="textarea"
+                placeholder="Message"
+                rows={3}
+                name="message"
+                onChange={handleInputChange}
+                required
+              />
             </Form.Group>
             <div className="d-grid mx-auto" data-aos="zoom-out-up">
               <Button
