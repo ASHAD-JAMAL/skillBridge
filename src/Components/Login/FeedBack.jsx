@@ -105,168 +105,28 @@
 
 // export default Feedback;
 
-// import  { useState } from 'react';
-
-// function FeedBack() {
-//   const [newReview, setNewReview] = useState('');
-//   const [reviews, setReviews] = useState([
-//     {
-//       name: 'Shobhith. S',
-//       date: 'Jan 01, 2024',
-//       text: 'Excellent teachers...',
-//       rating: 5, // Add rating property to each review object
-//     },
-//   ]);
-//   const [rating, setRating] = useState(0); // State for hover/selected rating
-
-//   const handleNewReviewChange = (event) => {
-//     setNewReview(event.target.value);
-//   };
-
-//   const handleAddReview = () => {
-//     setReviews([...reviews, { name: '', date: new Date().toLocaleDateString(), text: newReview, rating }]);
-//     setNewReview('');
-//     setRating(0); // Reset rating after adding review
-//   };
-
-//   const handleRatingHover = (newRating) => {
-//     setRating(newRating);
-//   };
-
-//   const handleRatingClick = (newRating) => {
-//     setReviews(
-//       reviews.map((review) => (review.date === new Date().toLocaleDateString() ? { ...review, rating: newRating } : review))
-//     );
-//   };
-
-// seconds parts>....................>>>>>>>>>>>>>>..>>>>>>>>>>
-
-//   return (
-//     <div className="review-container bg-gray-100 p-24 px-80 rounded-lg shadow-md">
-//       <h3 className="text-xl font-bold text-center mb-4">Customer Review and Ratings</h3>
-//       {reviews.map((review) => (
-//         <div className="review p-4 mb-4 border border-gray-200 rounded-lg " key={review.date}>
-//           <div className='flex justify-between'>
-//           <p className="reviewer-name font-medium text-gray-800">{review.name}</p>
-//           <div className="review-rating">
-//             {[...Array(5)].map((star, index) => {
-//               const starRating = index + 1;
-//               return (
-//                 <span
-//                   key={starRating}
-//                   className={`star cursor-pointer ${
-//                     starRating <= review.rating || starRating <= rating ? 'text-yellow-500' : 'text-gray-300'
-//                   }`}
-//                   onMouseEnter={() => handleRatingHover(starRating)}
-//                   onClick={() => handleRatingClick(starRating)}
-//                 >
-//                   ★
-//                 </span>
-//               );
-//             })}
-//           </div>
-
-//           </div>
-
-//           <p className="review-date text-gray-600 text-sm font-mono">{review.date}</p>
-//           <p className="review-text text-gray-700">{review.text}</p>
-
-//         </div>
-//       ))}
-//       <div className="add-review flex flex-col gap-2">
-//         <textarea
-//           value={newReview}
-//           onChange={handleNewReviewChange}
-//           placeholder="Add a review"
-//           className="p-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-500 resize-none"
-//         />
-//         <div className="add-review-rating flex items-center">
-//           <p className="text-gray-700 mr-2">Your Rating:</p>
-//           {[...Array(5)].map((star, index) => {
-//             const starRating = index + 1;
-//             return (
-//               <span
-//                 key={starRating}
-//                 className={`star cursor-pointer ${starRating <= rating ? 'text-yellow-500' : 'text-gray-300'}`}
-//                 onMouseEnter={() => handleRatingHover(starRating)}
-//                 onClick={() => handleAddReview()} // Add review on click here
-//               >
-//                 ★
-//               </span>
-//             );
-//           })}
-//         </div>
-//         <button onClick={handleAddReview} className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700">
-//           Add Review
-//         </button>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default FeedBack;
-
-// thirds Parts
-
-import { useState, useEffect } from "react";
+import  { useState } from 'react';
 
 function FeedBack() {
-  const [newReview, setNewReview] = useState("");
-  const [reviews, setReviews] = useState([]); // Initially empty
+  const [newReview, setNewReview] = useState('');
+  const [reviews, setReviews] = useState([
+    {
+      name: 'Shobhith. S',
+      date: 'Jan 01, 2024',
+      text: 'Excellent teachers...',
+      rating: 5, // Add rating property to each review object
+    },
+  ]);
   const [rating, setRating] = useState(0); // State for hover/selected rating
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Placeholder for authentication state
-
-  const fetchReviews = async () => {
-    try {
-      const response = await fetch("/api/reviews", {
-        // Replace with your endpoint URL
-        method: "GET", // Assuming GET for fetching reviews
-      });
-      const data = await response.json();
-      setReviews(data); // Update reviews state with fetched data
-    } catch (error) {
-      console.error("Error fetching reviews:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchReviews(); // Fetch reviews on component mount
-  }, []); // Empty dependency array to run only once on mount
 
   const handleNewReviewChange = (event) => {
     setNewReview(event.target.value);
   };
 
-  const handleAddReview = async () => {
-    if (!isLoggedIn) {
-      alert("Please log in to leave a review."); // Handle non-logged in users
-      return;
-    }
-
-    try {
-      const response = await fetch("/api/reviews", {
-        // Replace with your endpoint URL
-        method: "POST", // Assuming POST for adding reviews
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`, // Assuming token-based auth (replace with your logic)
-        },
-        body: JSON.stringify({ text: newReview, rating }), // Send review data
-      });
-
-      if (response.ok) {
-        const newReviewData = await response.json();
-        setReviews([...reviews, newReviewData]); // Add new review to state
-        setNewReview("");
-        setRating(0);
-      } else {
-        console.error("Error adding review:", await response.text());
-        // Handle error (e.g., display an error message)
-      }
-    } catch (error) {
-      console.error("Error adding review:", error);
-      // Handle error (e.g., display an error message)
-    }
+  const handleAddReview = () => {
+    setReviews([...reviews, { name: '', date: new Date().toLocaleDateString(), text: newReview, rating }]);
+    setNewReview('');
+    setRating(0); // Reset rating after adding review
   };
 
   const handleRatingHover = (newRating) => {
@@ -275,98 +135,238 @@ function FeedBack() {
 
   const handleRatingClick = (newRating) => {
     setReviews(
-      reviews.map((review) =>
-        review.date === new Date().toLocaleDateString()
-          ? { ...review, rating: newRating }
-          : review
-      )
+      reviews.map((review) => (review.date === new Date().toLocaleDateString() ? { ...review, rating: newRating } : review))
     );
   };
 
+// seconds parts
+
   return (
     <div className="review-container bg-gray-100 p-24 px-80 rounded-lg shadow-md">
-      <h3 className="text-xl font-bold text-center mb-4">
-        Customer Review and Ratings
-      </h3>
+      <h3 className="text-xl font-bold text-center mb-4">Customer Review and Ratings</h3>
       {reviews.map((review) => (
-        <div
-          className="review p-4 mb-4 border border-gray-200 rounded-lg "
-          key={review.date}
-        >
-          <div className="flex justify-between">
-            <p className="reviewer-name font-medium text-gray-800">
-              {review.name}
-            </p>
-            <div className="review-rating">
-              {[...Array(5)].map((star, index) => {
-                const starRating = index + 1;
-                return (
-                  <span
-                    key={starRating}
-                    className={`star cursor-pointer ${
-                      starRating <= review.rating || starRating <= rating
-                        ? "text-yellow-500"
-                        : "text-gray-300"
-                    }`}
-                    onMouseEnter={() => handleRatingHover(starRating)}
-                    onClick={() => handleRatingClick(starRating)}
-                  >
-                    ★
-                  </span>
-                );
-              })}
-            </div>
+        <div className="review p-4 mb-4 border border-gray-200 rounded-lg " key={review.date}>
+          <div className='flex justify-between'>
+          <p className="reviewer-name font-medium text-gray-800">{review.name}</p>
+          <div className="review-rating">
+            {[...Array(5)].map((star, index) => {
+              const starRating = index + 1;
+              return (
+                <span
+                  key={starRating}
+                  className={`star cursor-pointer ${
+                    starRating <= review.rating || starRating <= rating ? 'text-yellow-500' : 'text-gray-300'
+                  }`}
+                  onMouseEnter={() => handleRatingHover(starRating)}
+                  onClick={() => handleRatingClick(starRating)}
+                >
+                  ★
+                </span>
+              );
+            })}
           </div>
-          <p className="review-date text-gray-600 text-sm font-mono">
-            {review.date}
-          </p>
+
+          </div>
+
+          <p className="review-date text-gray-600 text-sm font-mono">{review.date}</p>
           <p className="review-text text-gray-700">{review.text}</p>
+
         </div>
       ))}
       <div className="add-review flex flex-col gap-2">
-        {!isLoggedIn && (
-          <p className="text-gray-700 mb-2">
-            Please{" "}
-            <a href="/login" className="text-blue-500">
-              log in
-            </a>{" "}
-            to leave a review.
-          </p>
-        )}
         <textarea
-          className="border border-gray-300 p-2 rounded-md"
-          placeholder="Write your review here..."
           value={newReview}
           onChange={handleNewReviewChange}
-        ></textarea>
-        <div className="flex items-center gap-2 justify-between">
-          <div>
+          placeholder="Add a review"
+          className="p-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-500 resize-none"
+        />
+        <div className="add-review-rating flex items-center">
+          <p className="text-gray-700 mr-2">Your Rating:</p>
           {[...Array(5)].map((star, index) => {
             const starRating = index + 1;
             return (
               <span
                 key={starRating}
-                className={`star cursor-pointer text-2xl ${
-                  starRating <= rating ? "text-yellow-500" : "text-gray-300"
-                }`}
+                className={`star cursor-pointer ${starRating <= rating ? 'text-yellow-500' : 'text-gray-300'}`}
                 onMouseEnter={() => handleRatingHover(starRating)}
-                onClick={() => handleRatingClick(starRating)}
+                onClick={() => handleAddReview()} // Add review on click here
               >
                 ★
               </span>
             );
           })}
-          </div>
-          <button
-            className="bg-blue-500 text-white px-4 py-2 rounded-md"
-            onClick={handleAddReview}
-          >
-            Add Review
-          </button>
         </div>
+        <button onClick={handleAddReview} className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700">
+          Add Review
+        </button>
       </div>
     </div>
   );
 }
 
 export default FeedBack;
+
+// thirds Parts
+
+// import { useState, useEffect } from "react";
+
+// function FeedBack() {
+//   const [newReview, setNewReview] = useState("");
+//   const [reviews, setReviews] = useState([]); // Initially empty
+//   const [rating, setRating] = useState(0); // State for hover/selected rating
+//   const [isLoggedIn, setIsLoggedIn] = useState(false); // Placeholder for authentication state
+
+//   const fetchReviews = async () => {
+//     try {
+//       const response = await fetch("/api/reviews", {
+//         // Replace with your endpoint URL
+//         method: "GET", // Assuming GET for fetching reviews
+//       });
+//       const data = await response.json();
+//       setReviews(data); // Update reviews state with fetched data
+//     } catch (error) {
+//       console.error("Error fetching reviews:", error);
+//     }
+//   };
+
+//   useEffect(() => {
+//     fetchReviews(); // Fetch reviews on component mount
+//   }, []); // Empty dependency array to run only once on mount
+
+//   const handleNewReviewChange = (event) => {
+//     setNewReview(event.target.value);
+//   };
+
+//   const handleAddReview = async () => {
+//     if (!isLoggedIn) {
+//       alert("Please log in to leave a review."); // Handle non-logged in users
+//       return;
+//     }
+
+//     try {
+//       const response = await fetch("/api/reviews", {
+//         // Replace with your endpoint URL
+//         method: "POST", // Assuming POST for adding reviews
+//         headers: {
+//           "Content-Type": "application/json",
+//           Authorization: `Bearer ${localStorage.getItem("token")}`, // Assuming token-based auth (replace with your logic)
+//         },
+//         body: JSON.stringify({ text: newReview, rating }), // Send review data
+//       });
+
+//       if (response.ok) {
+//         const newReviewData = await response.json();
+//         setReviews([...reviews, newReviewData]); // Add new review to state
+//         setNewReview("");
+//         setRating(0);
+//       } else {
+//         console.error("Error adding review:", await response.text());
+//         // Handle error (e.g., display an error message)
+//       }
+//     } catch (error) {
+//       console.error("Error adding review:", error);
+//       // Handle error (e.g., display an error message)
+//     }
+//   };
+
+//   const handleRatingHover = (newRating) => {
+//     setRating(newRating);
+//   };
+
+//   const handleRatingClick = (newRating) => {
+//     setReviews(
+//       reviews.map((review) =>
+//         review.date === new Date().toLocaleDateString()
+//           ? { ...review, rating: newRating }
+//           : review
+//       )
+//     );
+//   };
+
+//   return (
+//     <div className="review-container bg-gray-100 p-24 px-80 rounded-lg shadow-md">
+//       <h3 className="text-xl font-bold text-center mb-4">
+//         Customer Review and Ratings
+//       </h3>
+//       {reviews.map((review) => (
+//         <div
+//           className="review p-4 mb-4 border border-gray-200 rounded-lg "
+//           key={review.date}
+//         >
+//           <div className="flex justify-between">
+//             <p className="reviewer-name font-medium text-gray-800">
+//               {review.name}
+//             </p>
+//             <div className="review-rating">
+//               {[...Array(5)].map((star, index) => {
+//                 const starRating = index + 1;
+//                 return (
+//                   <span
+//                     key={starRating}
+//                     className={`star cursor-pointer ${
+//                       starRating <= review.rating || starRating <= rating
+//                         ? "text-yellow-500"
+//                         : "text-gray-300"
+//                     }`}
+//                     onMouseEnter={() => handleRatingHover(starRating)}
+//                     onClick={() => handleRatingClick(starRating)}
+//                   >
+//                     ★
+//                   </span>
+//                 );
+//               })}
+//             </div>
+//           </div>
+//           <p className="review-date text-gray-600 text-sm font-mono">
+//             {review.date}
+//           </p>
+//           <p className="review-text text-gray-700">{review.text}</p>
+//         </div>
+//       ))}
+//       <div className="add-review flex flex-col gap-2">
+//         {!isLoggedIn && (
+//           <p className="text-gray-700 mb-2">
+//             Please{" "}
+//             <a href="/login" className="text-blue-500">
+//               log in
+//             </a>{" "}
+//             to leave a review.
+//           </p>
+//         )}
+//         <textarea
+//           className="border border-gray-300 p-2 rounded-md"
+//           placeholder="Write your review here..."
+//           value={newReview}
+//           onChange={handleNewReviewChange}
+//         ></textarea>
+//         <div className="flex items-center gap-2 justify-between">
+//           <div>
+//           {[...Array(5)].map((star, index) => {
+//             const starRating = index + 1;
+//             return (
+//               <span
+//                 key={starRating}
+//                 className={`star cursor-pointer text-2xl ${
+//                   starRating <= rating ? "text-yellow-500" : "text-gray-300"
+//                 }`}
+//                 onMouseEnter={() => handleRatingHover(starRating)}
+//                 onClick={() => handleRatingClick(starRating)}
+//               >
+//                 ★
+//               </span>
+//             );
+//           })}
+//           </div>
+//           <button
+//             className="bg-blue-500 text-white px-4 py-2 rounded-md"
+//             onClick={handleAddReview}
+//           >
+//             Add Review
+//           </button>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default FeedBack;

@@ -8,7 +8,7 @@ function Footer() {
   return (
     <>
       <div className="container-fluid bg-[#f4fafe]">
-        <div className="row justify-content-center pt-8 pb-8">
+        <div className="row justify-content-center py-20">
           <div className="col-lg-3 col-md-6 col-sm-11 mb-4">
             <h1 className="text-3xl font-bold" data-aos="fade-up">
               <span className="text-[#09f4bf]">NewsLetter</span> <br /> Stay
@@ -50,12 +50,9 @@ function Footer() {
       <div className="container-fluid bg-[#172b41]">
         <div className="row justify-center items-center pt-15 pb-15 pr-10 pl-10">
           <div className="col-md-4 col-sm-6 text-white text-medium">
-            <img src={Logo} alt="" srcSet="" class="mr-3 h-12 mt-3" />
+            <img src={Logo} alt="" srcSet="" className="mr-3 h-12 mt-3" />
             <p className="mt-5 mb-5">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vitae
-              ipsa praesentium perferendis rem exercitationem, illo odio
-              doloribus voluptas explicabo esse iste, fuga dolorum, quos odit
-              quod nam autem! Ducimus, sequi!
+            SkillBridge is a revolutionary home service web application designed to seamlessly connect users with local skilled workers without any intermediaries. Our platform aims to simplify the process of finding and hiring small works workers for various home service needs, eliminating the hassle of traditional search methods.
             </p>
           </div>
           <div className="col-md-2 col-sm-6 text-white text-medium">
@@ -89,7 +86,7 @@ function Footer() {
           <div className="col-md-3 col-sm-6 text-white text-medium mb-3">
             <h1 className="text-2xl font-bold mt-2">Get In Touch</h1>
             <div className="d-flex align-items-center mt-2">
-            <i class="bi bi-geo-alt-fill text-[#09f4bf]"></i>
+            <i className="bi bi-geo-alt-fill text-[#09f4bf]"></i>
               <p className="mb-0 ml-2">GaichiBowli, Hyderabad</p>
             </div>
             <div className="d-flex align-items-center mt-2">
@@ -98,7 +95,7 @@ function Footer() {
             </div>
             <div className="d-flex align-items-center mt-2">
               <i className="bi bi-envelope-fill text-[#09f4bf]"></i>
-              <p className="mb-0 ml-2">ashadjamalhyt@gmail.com</p>
+              <p className="mb-0 ml-2">skillbridge@gmail.com</p>
             </div>
           </div>
         </div>

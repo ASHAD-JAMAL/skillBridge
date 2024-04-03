@@ -1,5 +1,3 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
 import img2 from "../../assets/Images/img2.jpg";
 import img3 from "../../assets/Images/img3.jpg";
 import img4 from "../../assets/Images/img4.jpg";
@@ -10,40 +8,65 @@ import "../../App.css";
 function About() {
   return (
     <div className="container-fluid">
-      <div className="row bg-[#fff] pt-5 pb-5 justify-content-center">
+      <div className="row bg-[#fff] justify-content-evenly pt-24">
         <div className="col-md-5">
-          <h1 className="text-[#09f4bf] text-sm font-bold mb-3" >About US</h1>
+          <h1 className="text-[#09f4bf] text-2xl font-bold mb-3">About US</h1>
           <h1 className="text-[#484848] mb-2 font-bold text-3xl">
             Repair And Maintenance You Call It
           </h1>
-          <p className="text-[#484848] mb-5 mt-3">
-            Morbi tempus purus vel tellus hendrerit porttitor. Cras blandit odio
-            urna, ac hendrerit turpis dignissim et. In at eros porttitor,
-            blandit ligula id, ornare nibh. Phasellus ut lectus ligula. Fusce
-            pharetra erat lorem, at suscipit leo luctus a. Vivamus ut velit quis
-            arcu eleifend dapibus et et lacus. Sed ac felis et magna vehicula
-            sagittis. Integer efficitur, nibh eu congue bibendum, libero libero
-            mollis leo, ac ornare nisl purus sed orci.
+          <p className="text-[#484848] mb-5 mt-3 text-justify">
+            SkillBridge is a revolutionary home service web application designed
+            to seamlessly connect users with local skilled workers without any
+            intermediaries. Our platform aims to simplify the process of finding
+            and hiring small works workers for various home service needs,
+            eliminating the hassle of traditional search methods.
+            <br />
+            At SkillBridge, we understand the challenges individuals face when
+            trying to locate reliable and skilled professionals for tasks such
+            as plumbing, electrical work, carpentry, gardening, and more.
+            Therefore, our platform serves as a bridge between users and skilled
+            workers in their nearby vicinity, ensuring efficient and trustworthy
+            service delivery.
           </p>
-          <NavLink
-            to="/contact"
-            className="bg-[#09f4bf] hover:bg-[#04ffa3] focus:ring-2 focus:ring-[#04ffa3] font-bold rounded-lg text-lg px-4 lg:px-5 py-3 mx-4 lg:py-2.5 mr-2 focus:outline-none text-white mt-5 mt-lg-0 mb-3 mb-lg-0 position-relative -left-7"
-          >
-            Contact us
-          </NavLink>
         </div>
-        <div className="col-md-3 d-none d-md-block " id="aboutImg">
-          <img src={img2} className="img-fluid" />
+        <div className="col-md-4 d-none d-md-block mt-14 pt-10" id="aboutImg">
+          <img src={img2} className="img-fluid rounded" />
         </div>
-        <div className="col-md-3 d-none d-md-block" id="aboutImg1">
-          <img src={img3} className="img-fluid" />
+      </div>
+      <div className="row bg-[#fff] pb-5 justify-content-evenly pt-10">
+        <div className="col-md-4 d-none d-md-block pt-10" id="aboutImg">
+          <img src={img3} className="img-fluid rounded " />
+        </div>
+        <div className="col-md-5">
+          <p className="text-[#484848] mb-5 mt-3 text-justify">
+            By leveraging advanced technology and a user-friendly interface,
+            SkillBridge streamlines the entire process, allowing users to browse
+            through a diverse pool of skilled workers, view their profiles, and
+            directly communicate with them. This direct connection eliminates
+            unnecessary intermediaries, reducing costs and simplifying the
+            hiring process for both parties involved.
+            <br />
+            Whether you need a quick fix or a larger home improvement project,
+            SkillBridge is your go-to solution. Our platform prioritizes
+            transparency, reliability, and convenience, ensuring that users can
+            easily find the right skilled worker for their specific needs, all
+            within their local community. Join SkillBridge today and experience
+            the future of home services!
+          </p>
         </div>
       </div>
       <div className="row bg-[#1ec4c4] justify-content-center pt-10 pb-10">
-        <h1 className="text-3xl text-center font-bold text-white" data-aos="zoom-in-right">Our Works</h1>
-        <p className="text-medium text-center text-white mt-3 mb-5" data-aos="zoom-in-right">
-          Aliquam erat volutpat. Aliquam maximus ullamcorper nulla quis lacinia.
-          Proin ligula nibh, eleifend in dui sed, laoreet consectetur ligula.
+        <h1
+          className="text-3xl text-center font-bold text-white"
+          data-aos="zoom-in-right"
+        >
+          Our Works
+        </h1>
+        <p
+          className="text-medium text-center text-white mt-3 mb-5"
+          data-aos="zoom-in-right"
+        >
+         we specialize in connecting users with skilled professionals for a wide range of services, including plumbing, electrical work, carpentry, gardening, and much more.
         </p>
         <div className="col-md-3 mt-3" data-aos="zoom-in-up">
           <img src={img5} className="img-fluid rounded-md" />
