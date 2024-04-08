@@ -1,35 +1,42 @@
 // import React from "react";
+import { useEffect, useState } from "react";
 import { InputGroup, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-function UserCard() {
+function UserCard(props) {
   return (
     <>
       <div className="card border-0 shadow-lg p-10 gap-y-3 rounded">
         <p>
-          <span className="font-bold">Worker Id:</span>30
+          <span className="font-bold">Worker Id:</span>
+          {props.id}
         </p>
         <p>
-          <span className="font-bold">Work:</span>Carpenter
+          <span className="font-bold">Name:</span>
+          {props.username}
         </p>
         <p>
-          <span className="font-bold">Work-Type:</span>Worker
+          <span className="font-bold">Work:</span>
+          {props.profession}
         </p>
         <p>
-          <span className="font-bold">Skills:</span>
-          Furniture-Making,Mathematical Calculation
+          <span className="font-bold">Work-Type:</span>
+          {props.role}
         </p>
         <p>
-          <span className="font-bold">Mobile-No:</span>123456789
+          <span className="font-bold">Mobile-No:</span>
+          {props.phone}
         </p>
         <div className="space-x-5">
           <Button className="bg-[#09f4bf] hover:bg-[#09725a] font-bold border-0">
             <Link to="/feedback">View Feedback</Link>
           </Button>
           <Button className="bg-[#09f4bf] hover:bg-[#09725a] font-bold border-0">
-            <Link to="/workerprofile">See Profile</Link>
+            <Link to={`/workerprofile/${props.id}`}>See Profile</Link>
           </Button>
-          
         </div>
       </div>
     </>
@@ -37,6 +44,28 @@ function UserCard() {
 }
 
 export default function UserDetails() {
+  const [workerList, setWorkerList] = useState();
+  const handleViewWorkers = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.post("http://localhost:8000/view-workers", {
+        headers: {
+          Authorization: token,
+        },
+      });
+      console.log(response);
+      if (response.status === 200) {
+        setWorkerList(response.data.data);
+      }
+    } catch (error) {
+      toast.error("Failed To Viewing Worker List");
+      console.error("errorn in finding worker list", error);
+    }
+  };
+  useEffect(() => {
+    handleViewWorkers();
+  }, []);
+
   return (
     <>
       <div className="container-fluid">
@@ -60,12 +89,15 @@ export default function UserDetails() {
               </Form>
             </div>
           </div>
-          <div className="col-md-5 col-10 mt-5">
-            <UserCard/>
-          </div>
-          <div className="col-md-5 col-10 mt-5">
-            <UserCard/>
-          </div>
+          {workerList ? (
+            workerList.map((item, index) => (
+              <div className="col-md-5 col-10 mt-5">
+                <UserCard id={item._id} profession={item.profession} role={item.role} phone={item.phone} username={item.username}/>
+              </div>
+            ))
+          ) : (
+            <h1>There is no worker</h1>
+          )}
         </div>
       </div>
     </>

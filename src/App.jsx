@@ -37,7 +37,7 @@ function App() {
           <Route path="user-details" element={<UserDetails/>} />
           <Route path="feedback" element={<Feedback/>}/>
           <Route path="userprofile" element={<UserProfile/>}/>
-          <Route path="workerprofile" element={<WorkerProfile/>}/>
+          <Route path="/workerprofile/:id" element={<WorkerProfile/>}/>
         </Route>
       </Routes>
 

@@ -19,6 +19,7 @@ function Register() {
     email: "",
     phone: "",
     password: "",
+    profession:"",
     city: "",
     state: "",
     zip: "",
@@ -147,6 +148,18 @@ function Register() {
                     placeholder="password"
                     name="password"
                     value={userData.password}
+                    onChange={handleInputChange}
+                  />
+                </Form.Group>
+                <Form.Group as={Col} md="10" controlId="validationCustom02">
+                  <Form.Label>Profession</Form.Label>
+                  <Form.Control
+                    required
+                    type="text"
+                    placeholder="Profession"
+                    defaultValue={""}
+                    name="profession"
+                    value={userData.profession}
                     onChange={handleInputChange}
                   />
                 </Form.Group>

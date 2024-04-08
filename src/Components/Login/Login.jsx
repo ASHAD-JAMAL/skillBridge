@@ -31,18 +31,19 @@ function Login() {
       console.log(response);
       if(response.status===200){
         toast.success('login successfully!!');
+        const token = localStorage.setItem("token",response.data.data.token)
         setTimeout(()=>{
-          if (userData.role === 'worker') {
-            window.location.href = '#/workerprofile';
+          if (response.data.data.role === 'worker') {
+            window.location.href = `#/workerprofile/${response.data.data.user._id}`;
           }
-          if(userData.role==='user'){
+          if(response.data.data.role==='user'){
             window.location.href = '#/user-details';
           }
         },2000)
       }
     }catch(error){
         toast.error("login failed");
-        console.log("error in login:",error)
+        console.error("error in login:",error)
     }
     
 
@@ -84,13 +85,6 @@ function Login() {
                     onChange={handleInputChange}
                     value={userData.password}
                   />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Select aria-label="Default" required name='role' onChange={handleInputChange}>
-                    <option value="">Open this select menu</option>
-                    <option value="user">User</option>
-                    <option value="worker">Worker</option>
-                  </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Check

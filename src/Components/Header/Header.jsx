@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -7,10 +7,20 @@ import { Link, NavLink } from "react-router-dom";
 import Logo from "../../assets/Images/logo1.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
-import '../../App.css'
+import "../../App.css";
 
 function CustomNavbar() {
   const [isOpen, setIsOpen] = useState(false);
+
+  const [isUser, setUser] = useState(false);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setUser(true);
+    } else {
+      setUser(false);
+    }
+  });
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -35,7 +45,7 @@ function CustomNavbar() {
               <img src={Logo} alt="" srcSet="" className="mr-3 h-12" />
             </Offcanvas.Title>
           </Offcanvas.Header>
-         
+
           <Offcanvas.Body>
             <Nav className="justify-content-center flex-grow-1 pe-3 font-bold">
               <NavLink
@@ -95,18 +105,24 @@ function CustomNavbar() {
                 Contact us
               </NavLink>
             </Nav>
-            <div className="">
-              <Link to="/login">
-                <button className="border-2 hover:bg-[#04ffa3] focus:ring-2 focus:ring-[#04ffa3] font-medium rounded-lg px-4 lg:px-5 py-2 mx-4 lg:py-2.5 mr-2 focus:outline-none hover:text-white mt-3 mt-lg-0">
-                  Login
-                </button>
-              </Link>
-              <Link to="/register">
-                <button className="border-2 hover:bg-[#04ffa3] focus:ring-2 focus:ring-[#04ffa3] font-medium rounded-lg px-4 lg:px-5 py-2 mx-4 lg:py-2.5 mr-2 focus:outline-none hover:text-white mt-3 mt-lg-0">
-                  Register
-                </button>
-              </Link>
-            </div>
+            {isUser ? (
+              <>
+                <i className="bi bi-person-circle text-3xl cursor-pointer"></i>
+              </>
+            ) : (
+              <div className="">
+                <Link to="/login">
+                  <button className="border-2 hover:bg-[#04ffa3] focus:ring-2 focus:ring-[#04ffa3] font-medium rounded-lg px-4 lg:px-5 py-2 mx-4 lg:py-2.5 mr-2 focus:outline-none hover:text-white mt-3 mt-lg-0">
+                    Login
+                  </button>
+                </Link>
+                <Link to="/register">
+                  <button className="border-2 hover:bg-[#04ffa3] focus:ring-2 focus:ring-[#04ffa3] font-medium rounded-lg px-4 lg:px-5 py-2 mx-4 lg:py-2.5 mr-2 focus:outline-none hover:text-white mt-3 mt-lg-0">
+                    Register
+                  </button>
+                </Link>
+              </div>
+            )}
           </Offcanvas.Body>
         </Navbar.Offcanvas>
       </Container>
