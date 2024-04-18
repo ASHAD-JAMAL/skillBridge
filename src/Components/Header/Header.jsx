@@ -7,6 +7,7 @@ import { Link, NavLink } from "react-router-dom";
 import Logo from "../../assets/Images/logo1.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import Dropdown from 'react-bootstrap/Dropdown';
 import "../../App.css";
 
 function CustomNavbar() {
@@ -107,7 +108,20 @@ function CustomNavbar() {
             </Nav>
             {isUser ? (
               <>
-                <i className="bi bi-person-circle text-3xl cursor-pointer"></i>
+                <Dropdown>
+                  <Dropdown.Toggle className="custom-dropdown-toggle ">
+                  <i className="bi bi-person-circle text-3xl cursor-pointer text-black"></i>
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu className="custom-dropdown-menu">
+                    <Dropdown.Item href="#/action-1">
+                      LogOut
+                    </Dropdown.Item>
+                    <Dropdown.Item href="#/action-2">
+                      SeeProfile
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
               </>
             ) : (
               <div className="">

@@ -12,4 +12,19 @@
     margin-bottom: 10px;
     border: 0;
   }
- 
+  .custom-dropdown-toggle {
+    background: none;
+    border: none;
+    outline: none;
+    padding: 0; /* Optional: remove padding if not needed */
+    color: black;
+  }
+  .custom-dropdown-toggle:hover {
+    background: none !important; /* Remove background color on hover */
+  }
+  .custom-dropdown-toggle:focus {
+    background: none !important; /* Remove background color on focus */
+  }
+  .custom-dropdown-menu{
+    margin-right: 40px !important;
+  }
