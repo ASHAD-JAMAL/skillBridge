@@ -30,10 +30,15 @@ function UserCard(props) {
           <span className="font-bold">Mobile-No:</span>
           {props.phone}
         </p>
-        <div className="space-x-5">
+        <p>
+          <span className="font-bold">Email-id:</span>
+          {props.email}
+        </p>
+        <div className="md:space-x-5">
           <Button className="bg-[#09f4bf] hover:bg-[#09725a] font-bold border-0">
             <Link to="/feedback">View Feedback</Link>
           </Button>
+          <div className="d-md-none mt-4"></div>
           <Button className="bg-[#09f4bf] hover:bg-[#09725a] font-bold border-0">
             <Link to={`/workerprofile/${props.id}`}>See Profile</Link>
           </Button>
@@ -92,7 +97,7 @@ export default function UserDetails() {
           {workerList ? (
             workerList.map((item, index) => (
               <div className="col-md-5 col-10 mt-5">
-                <UserCard id={item._id} profession={item.profession} role={item.role} phone={item.phone} username={item.username}/>
+                <UserCard id={item._id} profession={item.profession} role={item.role} phone={item.phone} username={item.username} email={item.email}/>
               </div>
             ))
           ) : (

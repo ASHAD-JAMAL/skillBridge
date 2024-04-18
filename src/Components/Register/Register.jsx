@@ -47,8 +47,12 @@ function Register() {
         }, 2000);
       }
     } catch (error) {
-      toast.error("register failed!!");
-      console.log("error is come:", error);
+      if (error.response && error.response.status === 409) {
+        toast.error("Email already registered");
+      } else {
+        toast.error("Registration failed");
+      }
+      console.error("Error:", error);
     }
   };
 
