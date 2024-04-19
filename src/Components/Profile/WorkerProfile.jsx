@@ -48,7 +48,7 @@ const WorkerProfile = () => {
                     <Image src="https://via.placeholder.com/150" rounded fluid className='h-40 w-40' />
                 </Col>
                 <Col md={8} className=' space-y-5 pl-14'>
-                    <h2 className='font-bold text-3xl space-x-3'>{worker.username}</h2>
+                    <h2 className='font-bold text-3xl space-x-3'>{worker.firstname} {worker.lastname}</h2>
                     <p><strong>Location : </strong> {worker.city},{worker.state},{worker.zip}</p>
                     {/* <p>
                         <strong>Ratings : </strong> 

@@ -11,27 +11,23 @@ function UserCard(props) {
     <>
       <div className="card border-0 shadow-lg p-10 gap-y-3 rounded">
         <p>
-          <span className="font-bold">Worker Id:</span>
+          <span className="font-bold">Worker Id: </span>
           {props.id}
         </p>
         <p>
-          <span className="font-bold">Name:</span>
-          {props.username}
+          <span className="font-bold">Name: </span>
+           {props.firstname} {props.lastname}
         </p>
         <p>
-          <span className="font-bold">Work:</span>
+          <span className="font-bold">Work: </span>
           {props.profession}
         </p>
         <p>
-          <span className="font-bold">Work-Type:</span>
+          <span className="font-bold">Work-Type: </span>
           {props.role}
         </p>
         <p>
-          <span className="font-bold">Mobile-No:</span>
-          {props.phone}
-        </p>
-        <p>
-          <span className="font-bold">Email-id:</span>
+          <span className="font-bold">Email-id: </span>
           {props.email}
         </p>
         <div className="md:space-x-5">
@@ -40,7 +36,7 @@ function UserCard(props) {
           </Button>
           <div className="d-md-none mt-4"></div>
           <Button className="bg-[#09f4bf] hover:bg-[#09725a] font-bold border-0">
-            <Link to={`/workerprofile/${props.id}`}>See Profile</Link>
+            <Link to={`/workerprofile/${props.id}`}>Connect</Link>
           </Button>
         </div>
       </div>
@@ -97,7 +93,7 @@ export default function UserDetails() {
           {workerList ? (
             workerList.map((item, index) => (
               <div className="col-md-5 col-10 mt-5">
-                <UserCard id={item._id} profession={item.profession} role={item.role} phone={item.phone} username={item.username} email={item.email}/>
+                <UserCard id={item._id} profession={item.profession} role={item.role} phone={item.phone} firstname={item.firstname} lastname={item.lastname} email={item.email}/>
               </div>
             ))
           ) : (

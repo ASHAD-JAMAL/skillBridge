@@ -12,24 +12,33 @@ import "../../App.css";
 
 function CustomNavbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isUser, setIsUser] = useState(false);
 
-  const [isUser, setUser] = useState(false);
+  // Function to handle login status
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      setUser(true);
+      setIsUser(true); // If token exists, set user as logged in
     } else {
-      setUser(false);
+      setIsUser(false); // If token doesn't exist, set user as not logged in
     }
-  });
+  }, []);
+
+  // Function to handle logout
+  const handleLogout = () => {
+    localStorage.removeItem("token"); // Remove token from localStorage
+    setIsUser(false); // Update user state to indicate logout
+    window.location.href = '#/';
+  };
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
+
   return (
     <Navbar
       expand="lg"
-      className="bg-body-tertiary border rounded  bg-[#eaf7fe]"
+      className="bg-body-tertiary border rounded bg-[#eaf7fe]"
     >
       <Container fluid>
         <Navbar.Brand href="#">
@@ -107,22 +116,20 @@ function CustomNavbar() {
               </NavLink>
             </Nav>
             {isUser ? (
-              <>
-                <Dropdown>
-                  <Dropdown.Toggle className="custom-dropdown-toggle ">
+              <Dropdown>
+                <Dropdown.Toggle className="custom-dropdown-toggle ">
                   <i className="bi bi-person-circle text-3xl cursor-pointer text-black"></i>
-                  </Dropdown.Toggle>
+                </Dropdown.Toggle>
 
-                  <Dropdown.Menu className="custom-dropdown-menu">
-                    <Dropdown.Item href="#/action-1">
-                      LogOut
-                    </Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">
-                      SeeProfile
-                    </Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </>
+                <Dropdown.Menu className="custom-dropdown-menu">
+                  <Dropdown.Item onClick={handleLogout}>
+                    LogOut
+                  </Dropdown.Item>
+                  <Dropdown.Item href="#/action-2">
+                    SeeProfile
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             ) : (
               <div className="">
                 <Link to="/login">
