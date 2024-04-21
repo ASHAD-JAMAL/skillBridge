@@ -24,7 +24,9 @@ function Register() {
     state: "",
     zip: "",
     role: "",
+    profileImage:"",
   });
+  const userDetailsFormData=new FormData();
   const handleSubmit = async (event) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
@@ -35,9 +37,23 @@ function Register() {
     setValidated(true);
     event.preventDefault();
     try {
+      userDetailsFormData.append('firstname',userData.firstname);
+      userDetailsFormData.append('lastname',userData.lastname);
+      userDetailsFormData.append('username',userData.username);
+      userDetailsFormData.append('email',userData.email);
+      userDetailsFormData.append('password',userData.password);
+      userDetailsFormData.append('profession',userData.profession);
+      userDetailsFormData.append('city',userData.city);
+      userDetailsFormData.append('phone',userData.phone);
+      userDetailsFormData.append('state',userData.state);
+      userDetailsFormData.append('zip',userData.zip);
+      userDetailsFormData.append('role',userData.role);
+      userDetailsFormData.append('profileImage',userData.profileImage);
+    
+
       const response = await axios.post(
         "http://localhost:8000/user-register/",
-        userData
+        userDetailsFormData
       );
       console.log(response);
       if (response.status === 201) {
@@ -57,7 +73,12 @@ function Register() {
   };
 
   const handleInputChange = (e) => {
-    setUserData({ ...userData, [e.target.name]: e.target.value });
+    if (e.target.name === "profileImage") {
+      setUserData({ ...userData, profileImage: e.target.files[0] });
+    } else {
+      setUserData({ ...userData, [e.target.name]: e.target.value });
+    }
+   
     console.log(userData);
   };
   return (
@@ -73,6 +94,7 @@ function Register() {
               validated={validated}
               onSubmit={handleSubmit}
               className="flex flex-col"
+              enctype='multipart/form-data'
             >
               <Row className="mb-3">
                 <Form.Group as={Col} md="10" controlId="validationCustom01">
@@ -152,6 +174,17 @@ function Register() {
                     placeholder="password"
                     name="password"
                     value={userData.password}
+                    onChange={handleInputChange}
+                  />
+                </Form.Group>
+                <Form.Group as={Col} md="10" controlId="validationCustom02">
+                  <Form.Label>Image</Form.Label>
+                  <Form.Control
+                    required
+                    type="file"
+                    accept="image/*"
+                    placeholder="Image"
+                    name="profileImage"
                     onChange={handleInputChange}
                   />
                 </Form.Group>
