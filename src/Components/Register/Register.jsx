@@ -52,7 +52,7 @@ function Register() {
     
 
       const response = await axios.post(
-        "http://localhost:8000/user-register/",
+        "http://15.206.186.104:8000/user-register/",
         userDetailsFormData
       );
       console.log(response);

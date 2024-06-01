@@ -49,7 +49,7 @@ export default function UserDetails() {
   const handleViewWorkers = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.post("http://localhost:8000/view-workers", {
+      const response = await axios.post("http://15.206.186.104:8000/view-workers", {
         headers: {
           Authorization: token,
         },

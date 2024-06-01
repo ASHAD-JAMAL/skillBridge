@@ -28,7 +28,7 @@ function Login() {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:8000/user-login",
+        "http://15.206.186.104:8000/user-login",
         userData
       );
       console.log(response);

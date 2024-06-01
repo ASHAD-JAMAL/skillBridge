@@ -7,7 +7,7 @@ import { Link, NavLink } from "react-router-dom";
 import Logo from "../../assets/Images/logo1.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
-import Dropdown from 'react-bootstrap/Dropdown';
+import Dropdown from "react-bootstrap/Dropdown";
 import "../../App.css";
 
 function CustomNavbar() {
@@ -28,7 +28,7 @@ function CustomNavbar() {
   const handleLogout = () => {
     localStorage.removeItem("token"); // Remove token from localStorage
     setIsUser(false); // Update user state to indicate logout
-    window.location.href = '#/';
+    window.location.href = "#/";
   };
 
   const toggleDropdown = () => {
@@ -121,13 +121,9 @@ function CustomNavbar() {
                   <i className="bi bi-person-circle text-3xl cursor-pointer text-black"></i>
                 </Dropdown.Toggle>
 
-                <Dropdown.Menu className="custom-dropdown-menu">
-                  <Dropdown.Item onClick={handleLogout}>
-                    LogOut
-                  </Dropdown.Item>
-                  <Dropdown.Item href="#/action-2">
-                    SeeProfile
-                  </Dropdown.Item>
+                <Dropdown.Menu className="custom-dropdown-menu" align="start">
+                  <Dropdown.Item onClick={handleLogout}>LogOut</Dropdown.Item>
+                  <Dropdown.Item href="#/action-2">SeeProfile</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             ) : (
