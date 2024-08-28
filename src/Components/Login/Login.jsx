@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import loginImg from "../../assets/Images/login1img.svg";
+import API from "../../../environmentvariable"
 
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -27,10 +28,13 @@ function Login() {
 
     event.preventDefault();
     try {
-      const response = await axios.post(
-        "http://15.206.186.104:8000/user-login",
-        userData
-      );
+      const response = await axios.post(`${API}/user-login/`, userData);
+
+      // const response = await axios.post(
+      //   "http://localhost:8000/user-login/",
+      //   userData
+      // );
+      
       console.log(response);
       if (response.status === 200) {
         toast.success("login successfully!!");

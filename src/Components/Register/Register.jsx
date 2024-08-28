@@ -27,13 +27,13 @@ function Register() {
     profileImage:"",
   });
   const userDetailsFormData=new FormData();
+
   const handleSubmit = async (event) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
     }
-
     setValidated(true);
     event.preventDefault();
     try {
@@ -50,11 +50,11 @@ function Register() {
       userDetailsFormData.append('role',userData.role);
       userDetailsFormData.append('profileImage',userData.profileImage);
     
-
-      const response = await axios.post(
-        "http://15.206.186.104:8000/user-register/",
-        userDetailsFormData
-      );
+      const response = await axios.post(`${API}/user-register/`,userDetailsFormData);
+      // const response = await axios.post(
+      //   "http://localhost:8000/user-register/",
+      //   userDetailsFormData
+      // );
       console.log(response);
       if (response.status === 201) {
         toast.success("register successfully");

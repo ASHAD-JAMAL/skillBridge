@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import API from "../../../environmentvariable"
+
 
 function UserCard(props) {
   return (
@@ -49,7 +51,7 @@ export default function UserDetails() {
   const handleViewWorkers = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.post("http://15.206.186.104:8000/view-workers", {
+      const response = await axios.post(`${API}/view-workers`, {
         headers: {
           Authorization: token,
         },

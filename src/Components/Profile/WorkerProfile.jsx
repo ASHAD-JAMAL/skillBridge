@@ -12,7 +12,7 @@ const WorkerProfile = () => {
     const fetchWorkerProfile = async () => {
         try {
             const token = localStorage.getItem("token");
-            const response = await axios.post('http://15.206.186.104:8000/view-workerProfile', { id }, {
+            const response = await axios.post('http://localhost:8000/view-workerProfile', { id }, {
                 headers: {
                     Authorization: token,
                 }
@@ -34,7 +34,7 @@ const WorkerProfile = () => {
         <Container className="profile-dashboard p-20 space-y-10 ">
             <Row>
                 <Col md={4} className='flex justify-end '>
-                    <Image src={`http://15.206.186.104:8000/uploads/${worker.profileImage}`} rounded fluid className='h-40 w-40' />
+                    <Image src={`http://localhost:8000/uploads/${worker.profileImage}`} rounded fluid className='h-40 w-40' />
                 </Col>
                 <Col md={8} className=' space-y-5 pl-14'>
                     <h2 className='font-bold text-3xl space-x-3'>{worker.firstname} {worker.lastname}</h2>
