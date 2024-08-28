@@ -28,13 +28,13 @@ function Login() {
 
     event.preventDefault();
     try {
-      const response = await axios.post(`${API}/user-login/`, userData);
+      // const response = await axios.post(`${API}/user-login/`, userData);
 
-      // const response = await axios.post(
-      //   "http://localhost:8000/user-login/",
-      //   userData
-      // );
-      
+      const response = await axios.post(
+        "http://localhost:8000/user-login/",
+        userData
+      );
+
       console.log(response);
       if (response.status === 200) {
         toast.success("login successfully!!");

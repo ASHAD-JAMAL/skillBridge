@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import API from "../../../environmentvariable"
-
+import API from "../../../environmentvariable";
 
 function UserCard(props) {
   return (
@@ -18,7 +17,7 @@ function UserCard(props) {
         </p>
         <p>
           <span className="font-bold">Name: </span>
-           {props.firstname} {props.lastname}
+          {props.firstname} {props.lastname}
         </p>
         <p>
           <span className="font-bold">Work: </span>
@@ -51,11 +50,18 @@ export default function UserDetails() {
   const handleViewWorkers = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.post(`${API}/view-workers`, {
+
+      const response = await axios.post("http://localhost:8000/view-workers", {
         headers: {
           Authorization: token,
         },
       });
+      
+      // const response = await axios.post(`${API}/view-workers`, {
+      //   headers: {
+      //     Authorization: token,
+      //   },
+      // });
       console.log(response);
       if (response.status === 200) {
         setWorkerList(response.data.data);
@@ -95,7 +101,15 @@ export default function UserDetails() {
           {workerList ? (
             workerList.map((item, index) => (
               <div className="col-md-5 col-10 mt-5">
-                <UserCard id={item._id} profession={item.profession} role={item.role} phone={item.phone} firstname={item.firstname} lastname={item.lastname} email={item.email}/>
+                <UserCard
+                  id={item._id}
+                  profession={item.profession}
+                  role={item.role}
+                  phone={item.phone}
+                  firstname={item.firstname}
+                  lastname={item.lastname}
+                  email={item.email}
+                />
               </div>
             ))
           ) : (
