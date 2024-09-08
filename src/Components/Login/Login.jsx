@@ -4,7 +4,8 @@ import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import loginImg from "../../assets/Images/login1img.svg";
-import API from "../../../environmentvariable"
+import API from "../../../environmentvariable";
+import googleLogo from "../../assets/Images/google_logo.png";
 
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -115,15 +116,23 @@ function Login() {
                     feedbackType="invalid"
                   />
                 </Form.Group>
-                <Button
-                  type="submit"
-                  className="bg-[#09f4bf] font-bold text-white text-sm border-0 my-3"
-                  onClick={handleSubmit}
-                >
-                  Submit form
-                </Button>
+                <div className="flex justify-between">
+                  <Button
+                    type="submit"
+                    className="bg-[#09f4bf] font-bold text-white text-sm border-0 my-3"
+                    onClick={handleSubmit}
+                  >
+                    Submit form
+                  </Button>
+                </div>
               </Form>
-              <Link to="/register" className="underline hover:text-[#09f4bf]">
+              <button className="flex justify-center items-center hover:bg-blue-900 text-black group border p-2 px-3 gap-2 rounded-full">
+                <img src={googleLogo} className="h-8 w-8" alt="" />
+                <p className="text-[17px] group-hover:text-white font-semibold">
+                  Sign in With Google
+                </p>
+              </button>
+              <Link to="/register" className="underline hover:text-[#09f4bf] mt-2">
                 Register
               </Link>
             </div>
